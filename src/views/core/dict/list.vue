@@ -47,26 +47,52 @@
         </el-button>
       </div>
     </el-dialog>
+
+    <el-table :data="list" border row-key="id" lazy :load="load">
+      <el-table-column label="名称" align="left" prop="name"/>
+      <el-table-column label="编码" prop="dictCode"/>
+      <el-table-column label="值" align="left" prop="value"/>
+    </el-table>
   </div>
 </template>
 
 <script>
+import dictApi from '@/api/core/dict'
+
 export default {
   data() {
     return {
       // 对话框是否显示
       dialogVisible: false,
       // 获取后端接口地址
-      BASE_API: process.env.VUE_APP_BASE_API
+      BASE_API: process.env.VUE_APP_BASE_API,
+      // 数据字典列表
+      list: []
     }
   },
-
+  created() {
+    this.fetchData()
+  },
   methods: {
+    // 加载而集节点
+    load(tree, treeNode, resolve) {
+      console.log('tree', tree)
+      console.log('treeNode', treeNode)
+      // 获取数据
+      dictApi.listByParentId(tree.id).then(response => {
+        resolve(response.data.list)
+      })
+    },
+    // 获取数据字典列表：
+    fetchData() {
+      dictApi.listByParentId(1).then(response => {
+        this.list = response.data.list
+      })
+    },
     // 上传多于一个文件时
     fileUploadExceed() {
       this.$message.warning('只能选取一个文件')
     },
-
     // 上传成功回调：通信成功
     fileUploadSuccess(response) {
       if (response.code === 200) {
@@ -83,7 +109,6 @@ export default {
     fileUploadError(error) {
       this.$message.error('数据导入失败')
     },
-
     exportData() {
       // 导出excel并下载：
       window.location.href = this.BASE_API + '/admin/core/dict/export'
