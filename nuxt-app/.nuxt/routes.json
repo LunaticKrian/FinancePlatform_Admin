@@ -1,0 +1,59 @@
+[
+  {
+    "name": "about",
+    "path": "/about",
+    "component": "E:\\\\SoftwareProject\\\\Finace-Admin\\\\nuxt-app\\\\pages\\\\about.vue",
+    "chunkName": "pages/about",
+    "_name": "_391ef18e"
+  },
+  {
+    "name": "lend",
+    "path": "/lend",
+    "component": "E:\\\\SoftwareProject\\\\Finace-Admin\\\\nuxt-app\\\\pages\\\\lend\\\\index.vue",
+    "chunkName": "pages/lend/index",
+    "_name": "_4021e9a2"
+  },
+  {
+    "path": "/user",
+    "component": "E:\\\\SoftwareProject\\\\Finace-Admin\\\\nuxt-app\\\\pages\\\\user.vue",
+    "chunkName": "pages/user",
+    "children": [
+      {
+        "name": "user",
+        "path": "",
+        "component": "E:\\\\SoftwareProject\\\\Finace-Admin\\\\nuxt-app\\\\pages\\\\user\\\\index.vue",
+        "chunkName": "pages/user/index",
+        "_name": "_6be29ed3"
+      },
+      {
+        "name": "user-user1",
+        "path": "user1",
+        "component": "E:\\\\SoftwareProject\\\\Finace-Admin\\\\nuxt-app\\\\pages\\\\user\\\\user1.vue",
+        "chunkName": "pages/user/user1",
+        "_name": "_a4ab2c72"
+      },
+      {
+        "name": "user-user2",
+        "path": "user2",
+        "component": "E:\\\\SoftwareProject\\\\Finace-Admin\\\\nuxt-app\\\\pages\\\\user\\\\user2.vue",
+        "chunkName": "pages/user/user2",
+        "_name": "_a48efd70"
+      }
+    ],
+    "_name": "_23413ecf"
+  },
+  {
+    "name": "lend-id",
+    "path": "/lend/:id",
+    "component": "E:\\\\SoftwareProject\\\\Finace-Admin\\\\nuxt-app\\\\pages\\\\lend\\\\_id.vue",
+    "chunkName": "pages/lend/_id",
+    "_name": "_d657e552"
+  },
+  {
+    "name": "index",
+    "path": "/",
+    "component": "E:\\\\SoftwareProject\\\\Finace-Admin\\\\nuxt-app\\\\pages\\\\index.vue",
+    "chunkName": "pages/index",
+    "_name": "_032861fe"
+  }
+]
