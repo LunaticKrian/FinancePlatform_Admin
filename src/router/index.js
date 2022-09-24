@@ -45,8 +45,7 @@ export const constantRoutes = [
 
   {
     path: '/',
-    // 布局组件
-    component: Layout,
+    component: Layout, // 布局组件
     redirect: '/dashboard',
     children: [
       {
@@ -70,12 +69,9 @@ export const constantRoutes = [
     children: [
       {
         path: 'list',
-        // 每个路由节点的name的名字不能相同
-        name: 'coreIntegralGradeList',
-        // 指向template模板组件
-        component: () => import('@/views/core/integral-grade/list'),
-        // 定义导航的标题
-        meta: { title: '积分等级列表' }
+        name: 'coreIntegralGradeList', // 每个路由节点的name的名字不能相同
+        component: () => import('@/views/core/integral-grade/list'), // 指向template模板组件
+        meta: { title: '积分等级列表' } // 定义导航的标题
       },
       {
         path: 'create',
@@ -88,6 +84,82 @@ export const constantRoutes = [
         name: 'coreIntegralGradeEdit',
         component: () => import('@/views/core/integral-grade/form'),
         meta: { title: '编辑积分等级' },
+        hidden: true
+      }
+    ]
+  },
+
+  {
+    path: '/core/user-info',
+    component: Layout,
+    redirect: '/core/user-info/list',
+    name: 'coreUserInfo',
+    meta: { title: '会员管理', icon: 'user' },
+    alwaysShow: true,
+    children: [
+      {
+        path: 'list',
+        name: 'coreUserInfoList',
+        component: () => import('@/views/core/user-info/list'),
+        meta: { title: '会员列表' }
+      }
+    ]
+  },
+
+  {
+    path: '/core/borrower',
+    component: Layout,
+    name: 'coreBorrower',
+    meta: { title: '借款管理', icon: 'el-icon-s-unfold' },
+    alwaysShow: true,
+    children: [
+      {
+        path: 'list',
+        name: 'coreBorrowerList',
+        component: () => import('@/views/core/borrower/list'),
+        meta: { title: '借款人列表' }
+      },
+      {
+        path: 'detail/:id',
+        name: 'coreBorrowerDetail',
+        component: () => import('@/views/core/borrower/detail'),
+        meta: { title: '借款人详情' },
+        hidden: true
+      },
+      {
+        path: 'info-list',
+        name: 'coreBorrowInfoList',
+        component: () => import('@/views/core/borrow-info/list'),
+        meta: { title: '借款列表' }
+      },
+      {
+        path: 'info-detail/:id',
+        name: 'coreBorrowInfoDetail',
+        component: () => import('@/views/core/borrow-info/detail'),
+        meta: { title: '借款详情' },
+        hidden: true
+      }
+    ]
+  },
+
+  {
+    path: '/core/lend',
+    component: Layout,
+    name: 'coreLend',
+    meta: { title: '标的管理', icon: 'el-icon-s-flag' },
+    alwaysShow: true,
+    children: [
+      {
+        path: 'list',
+        name: 'coreLendList',
+        component: () => import('@/views/core/lend/list'),
+        meta: { title: '标的列表' }
+      },
+      {
+        path: 'detail/:id',
+        name: 'coreLendDetail',
+        component: () => import('@/views/core/lend/detail'),
+        meta: { title: '标的详情' },
         hidden: true
       }
     ]
@@ -115,7 +187,7 @@ export const constantRoutes = [
     component: Layout,
     redirect: '/example/table',
     name: 'Example',
-    meta: { title: '示例', icon: 'el-icon-s-help' },
+    meta: { title: '例子', icon: 'el-icon-s-help' },
     children: [
       {
         path: 'table',
@@ -135,6 +207,8 @@ export const constantRoutes = [
   {
     path: '/form',
     component: Layout,
+    meta: { title: '一级标题', icon: 'el-icon-goods' },
+    alwaysShow: true,
     children: [
       {
         path: 'index',
@@ -181,13 +255,15 @@ export const asyncRoutes = [
             children: [
               {
                 path: 'menu1-2-1',
-                component: () => import('@/views/nested/menu1/menu1-2/menu1-2-1'),
+                component: () =>
+                  import('@/views/nested/menu1/menu1-2/menu1-2-1'),
                 name: 'Menu1-2-1',
                 meta: { title: 'Menu1-2-1' }
               },
               {
                 path: 'menu1-2-2',
-                component: () => import('@/views/nested/menu1/menu1-2/menu1-2-2'),
+                component: () =>
+                  import('@/views/nested/menu1/menu1-2/menu1-2-2'),
                 name: 'Menu1-2-2',
                 meta: { title: 'Menu1-2-2' }
               }
@@ -224,11 +300,12 @@ export const asyncRoutes = [
   { path: '*', redirect: '/404', hidden: true }
 ]
 
-const createRouter = () => new Router({
-  // mode: 'history', // require service support
-  scrollBehavior: () => ({ y: 0 }),
-  routes: constantRoutes
-})
+const createRouter = () =>
+  new Router({
+    // mode: 'history', // require service support
+    scrollBehavior: () => ({ y: 0 }),
+    routes: constantRoutes
+  })
 
 const router = createRouter()
 
