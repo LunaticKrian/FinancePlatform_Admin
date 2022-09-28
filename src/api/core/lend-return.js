@@ -1,8 +1,9 @@
 import request from '@/utils/request'
+
 export default {
-  listByParentId(parentId) {
+  getList(lendId) {
     return request({
-      url: `/admin/core/dict/listByParentId/${parentId}`,
+      url: `/admin/core/lendReturn/list/` + lendId,
       method: 'get'
     })
   }
